@@ -12,13 +12,14 @@ import {
 import '../../index.css';
 import styles from './app.module.css';
 
-import { AppHeader, IngredientDetails, OrderInfo } from '@components';
+import { AppHeader, IngredientDetails, Modal, OrderInfo } from '@components';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { ProtectedRoute } from '../protected-route';
 import { ROLE } from '../../utils/constants';
 
 const App = () => {
   const navigate = useNavigate();
+  const closeModal = () => navigate(-1);
   return (
     <div className={styles.app}>
       <AppHeader />
@@ -44,10 +45,31 @@ const App = () => {
           <Route path='/profile/orders' element={<ProfileOrders />} />
         </Route>
         <Route path='*' element={<NotFound404 />} />
-        <Route path='/feed/:number' element={<OrderInfo />} />
-        <Route path='/ingredients/:id' element={<IngredientDetails />} />
+        <Route
+          path='/feed/:number'
+          element={
+            <Modal title='Детали заказа' onClose={closeModal}>
+              <OrderInfo />
+            </Modal>
+          }
+        />
+        <Route
+          path='/ingredients/:id'
+          element={
+            <Modal title='Детали компонента' onClose={closeModal}>
+              <IngredientDetails />
+            </Modal>
+          }
+        />
         <Route element={<ProtectedRoute accessRoles={[ROLE.USER]} />}>
-          <Route path='/profile/orders/:number' element={<OrderInfo />} />
+          <Route
+            path='/profile/orders/:number'
+            element={
+              <Modal title='Номер заказа' onClose={closeModal}>
+                <OrderInfo />
+              </Modal>
+            }
+          />
         </Route>
       </Routes>
     </div>
