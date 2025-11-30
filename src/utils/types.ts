@@ -1,3 +1,5 @@
+import { ROLE } from './constants';
+
 export type TIngredient = {
   _id: string;
   name: string;
@@ -38,3 +40,11 @@ export type TUser = {
 };
 
 export type TTabMode = 'bun' | 'sauce' | 'main';
+
+export type Role = (typeof ROLE)[keyof typeof ROLE];
+export type User = {
+  id: number;
+  name: string;
+  login: string;
+  role: Role;
+};
