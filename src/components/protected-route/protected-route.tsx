@@ -1,21 +1,27 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { Outlet, Navigate } from 'react-router-dom';
-import { RootState } from 'src/services/store';
-import { Role } from '@utils-types';
+import { FC, PropsWithChildren } from 'react';
+import { Navigate, useLocation } from 'react-router-dom';
+import { useSelector } from '../../services/store';
+import { selectIsAuth } from '../../features/selectors/user';
 
-export const ProtectedRoute = ({ accessRoles }: { accessRoles: Role[] }) => {
-  const { isInit, isLoading, user } = useSelector(
-    (state: RootState) => state.user
-  );
+type TProtectedRouteProps = PropsWithChildren<{ onlyUnAuth?: boolean }>;
 
-  if (isLoading || !isInit) {
-    return <div>Загрузка...</div>;
+export const ProtectedRoute: FC<TProtectedRouteProps> = ({
+  onlyUnAuth = false,
+  children
+}) => {
+  const location = useLocation();
+  const isAuth = useSelector(selectIsAuth);
+
+  if (onlyUnAuth && isAuth) {
+    const from = (location.state as any)?.from?.pathname || '/';
+    return <Navigate to={from} replace />;
   }
 
-  if (!user || !accessRoles.includes(user.role)) {
-    return <Navigate to='/login' />;
+  if (!onlyUnAuth && !isAuth) {
+    return <Navigate to='/login' replace state={{ from: location }} />;
   }
 
-  return <Outlet />;
+  return <>{children}</>;
 };
+
+export default ProtectedRoute;

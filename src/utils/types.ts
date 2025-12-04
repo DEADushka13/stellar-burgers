@@ -48,3 +48,21 @@ export type User = {
   login: string;
   role: Role;
 };
+
+export const enum RequestStatus {
+  Idle = 'Idle',
+  Loading = 'Loading',
+  Success = 'Success',
+  Failed = 'Failed'
+};
+
+export type TRegisterData = {
+  email: string;
+  name: string;
+  password: string;
+};
+
+export type TLoginData = {
+  email: string;
+  password: string;
+};
