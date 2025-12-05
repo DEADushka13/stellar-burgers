@@ -9,7 +9,6 @@ import { rootReducer, RootState } from '../features/slices/rootReducer';
 // import user from '../features/user/userSlice';
 // const rootReducer = () => {}; // Заменить на импорт настоящего редьюсера
 
-
 const store = configureStore({
   reducer: rootReducer,
   devTools: process.env.NODE_ENV !== 'production'

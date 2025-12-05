@@ -1,6 +1,12 @@
-import { registerUserApi, loginUserApi, logoutApi, getUserApi, updateUserApi } from "@api";
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TUser, TRegisterData, TLoginData } from "@utils-types";
+import {
+  registerUserApi,
+  loginUserApi,
+  logoutApi,
+  getUserApi,
+  updateUserApi
+} from '@api';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { TUser, TRegisterData, TLoginData } from '@utils-types';
 
 export interface UserState {
   user: TUser | null;

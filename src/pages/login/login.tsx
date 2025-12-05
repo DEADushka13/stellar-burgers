@@ -7,7 +7,7 @@ import { loginUser } from '../../features/slices/userSlice';
 import { AppDispatch } from 'src/services/store';
 
 export const Login: FC = () => {
-   const [email, setEmail] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
@@ -27,11 +27,13 @@ export const Login: FC = () => {
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
-    dispatch(loginUser({ email, password })).then((result: { type: string; }) => {
-      if (result.type === 'user/loginUser/fulfilled') {
-        navigate(from, { replace: true });
+    dispatch(loginUser({ email, password })).then(
+      (result: { type: string }) => {
+        if (result.type === 'user/loginUser/fulfilled') {
+          navigate(from, { replace: true });
+        }
       }
-    });
+    );
   };
 
   return (

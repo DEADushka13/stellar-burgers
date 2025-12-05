@@ -9,7 +9,7 @@ import { RootState } from '../../features/slices/rootReducer';
 export const IngredientDetails: FC = () => {
   /** TODO: взять переменную из стора */
   const { id } = useParams<{ id: string }>();
-  const ingredientData = useSelector((state:RootState) =>
+  const ingredientData = useSelector((state: RootState) =>
     id ? getIngredientById(state, id) : null
   );
 

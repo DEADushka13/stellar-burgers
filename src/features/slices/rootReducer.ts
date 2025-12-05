@@ -1,4 +1,4 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 import ingredientsReducer from './ingredientsSlice';
 import constructorReducer from './constructorSlice';
 import orderReducer from './orderSlice';

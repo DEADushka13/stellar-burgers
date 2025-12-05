@@ -1,4 +1,4 @@
-import { RootState } from "../slices/rootReducer";
+import { RootState } from '../slices/rootReducer';
 
 export const getConstructorBun = (state: RootState) => state.constructor.bun;
 export const getConstructorIngredients = (state: RootState) =>

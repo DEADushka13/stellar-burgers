@@ -9,9 +9,15 @@ import { RootState } from '../../features/slices/rootReducer';
 
 export const BurgerIngredients: FC = () => {
   /** TODO: взять переменные из стора */
-  const buns = useSelector((state:RootState) => getIngredientsByType(state, 'bun'));
-  const mains = useSelector((state:RootState) => getIngredientsByType(state, 'main'));
-  const sauces = useSelector((state:RootState) => getIngredientsByType(state, 'sauce'));
+  const buns = useSelector((state: RootState) =>
+    getIngredientsByType(state, 'bun')
+  );
+  const mains = useSelector((state: RootState) =>
+    getIngredientsByType(state, 'main')
+  );
+  const sauces = useSelector((state: RootState) =>
+    getIngredientsByType(state, 'sauce')
+  );
 
   const [currentTab, setCurrentTab] = useState<TTabMode>('bun');
   const titleBunRef = useRef<HTMLHeadingElement>(null);

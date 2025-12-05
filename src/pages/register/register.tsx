@@ -26,7 +26,7 @@ export const Register: FC = () => {
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
     dispatch(registerUser({ name: userName, email, password })).then(
-      (result: { type: string; }) => {
+      (result: { type: string }) => {
         if (result.type === 'user/registerUser/fulfilled') {
           navigate('/', { replace: true });
         }

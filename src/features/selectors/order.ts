@@ -1,5 +1,4 @@
-import { RootState } from "../slices/rootReducer";
-
+import { RootState } from '../slices/rootReducer';
 
 export const getCurrentOrder = (state: RootState) => state.order.currentOrder;
 export const getOrderNumber = (state: RootState) => state.order.orderNumber;

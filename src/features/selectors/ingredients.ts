@@ -1,4 +1,4 @@
-import { RootState } from "../slices/rootReducer";
+import { RootState } from '../slices/rootReducer';
 
 export const getIngredients = (state: RootState) => state.ingredients.items;
 export const getIngredientsLoading = (state: RootState) =>

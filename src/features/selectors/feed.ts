@@ -1,4 +1,4 @@
-import { RootState } from "../slices/rootReducer";
+import { RootState } from '../slices/rootReducer';
 
 export const getFeedOrders = (state: RootState) => state.feed.orders;
 export const getFeedTotal = (state: RootState) => state.feed.total;

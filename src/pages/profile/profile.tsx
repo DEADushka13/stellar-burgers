@@ -35,7 +35,7 @@ export const Profile: FC = () => {
     if (formValue.email !== user?.email) updateData.email = formValue.email;
     if (formValue.password) updateData.password = formValue.password;
 
-    dispatch(updateUser(updateData)).then((result: { type: string; }) => {
+    dispatch(updateUser(updateData)).then((result: { type: string }) => {
       if (result.type === 'user/updateUser/fulfilled') {
         setFormValue((prev) => ({ ...prev, password: '' }));
       }
